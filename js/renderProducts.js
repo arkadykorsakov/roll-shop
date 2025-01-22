@@ -1,16 +1,11 @@
-const productsContainer = document.querySelector("#products-container");
+const productsContainer = document.querySelector('#products-container')
 
-// Запускаем getProducts
-getProducts();
+getProducts()
 
-// Асинхронная функция получения данных из файла products.json
 async function getProducts() {
-  // Получаем данные из products.json
-  const response = await fetch("./js/products.json");
-  // Парсим данные из JSON формата в JS
-  const productsArray = await response.json();
-  // Запускаем ф-ю рендера (отображения товаров)
-  renderProducts(productsArray);
+  const response = await fetch('./js/products.json')
+  const productsArray = await response.json()
+  renderProducts(productsArray)
 }
 
 function renderProducts(productsArray) {
@@ -38,7 +33,7 @@ function renderProducts(productsArray) {
 
 							</div>
 						</div>
-					</div>`;
-    productsContainer.insertAdjacentHTML("beforeend", productHTML);
-  });
+					</div>`
+    productsContainer.insertAdjacentHTML('beforeend', productHTML)
+  })
 }

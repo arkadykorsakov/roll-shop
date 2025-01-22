@@ -1,27 +1,27 @@
-const cartWrapper = document.querySelector(".cart-wrapper");
+const cartWrapper = document.querySelector('.cart-wrapper')
 
-window.addEventListener("click", function (event) {
-  if (event.target.hasAttribute("data-cart")) {
-    const card = event.target.closest(".card");
+window.addEventListener('click', function (event) {
+  if (event.target.hasAttribute('data-cart')) {
+    const card = event.target.closest('.card')
 
     const productInfo = {
       id: card.dataset.id,
-      imgSrc: card.querySelector(".product-img").getAttribute("src"),
-      title: card.querySelector(".item-title").innerText,
-      itemsInBox: card.querySelector("[data-items-in-box]").innerText,
-      weight: card.querySelector(".price__weight").innerText,
-      price: card.querySelector(".price__currency").innerText,
-      counter: card.querySelector("[data-counter]").innerText,
-    };
+      imgSrc: card.querySelector('.product-img').getAttribute('src'),
+      title: card.querySelector('.item-title').innerText,
+      itemsInBox: card.querySelector('[data-items-in-box]').innerText,
+      weight: card.querySelector('.price__weight').innerText,
+      price: card.querySelector('.price__currency').innerText,
+      counter: card.querySelector('[data-counter]').innerText
+    }
 
     const itemInCart = cartWrapper.querySelector(
       `[data-id="${productInfo.id}"]`
-    );
+    )
 
     if (itemInCart) {
-      const counterElement = itemInCart.querySelector("[data-counter]");
+      const counterElement = itemInCart.querySelector('[data-counter]')
       counterElement.innerText =
-        parseInt(counterElement.innerText) + parseInt(productInfo.counter);
+        parseInt(counterElement.innerText) + parseInt(productInfo.counter)
     } else {
       const cartItemHTML = `<div class="cart-item" data-id="${productInfo.id}">
 								<div class="cart-item__top">
@@ -43,11 +43,11 @@ window.addEventListener("click", function (event) {
 										</div>
 									</div>
 								</div>
-							</div>`;
-      cartWrapper.insertAdjacentHTML("beforeend", cartItemHTML);
+							</div>`
+      cartWrapper.insertAdjacentHTML('beforeend', cartItemHTML)
     }
-    card.querySelector("[data-counter]").innerText = "1";
-    toggleCartStatus();
-    calcCartPriceAndDelivery();
+    card.querySelector('[data-counter]').innerText = '1'
+    toggleCartStatus()
+    calcCartPriceAndDelivery()
   }
-});
+})
